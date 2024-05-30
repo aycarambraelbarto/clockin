@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock-In System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="clock-in-site">
+        <h1>Clock-In Site</h1>
+        <div id="clock-in-form">
+            <p>Enter Code:</p>
+            <input type="text" id="worker-code" placeholder="Enter your code">
+            <button class="btn" onclick="clockIn()">Submit</button>
+        </div>
+        <div id="worker-info" style="display:none;">
+            <h2 id="worker-name"></h2>
+            <button class="btn" onclick="logEvent('clock_in')">Clock In</button>
+            <button class="btn" onclick="logEvent('clock_out')">Clock Out</button>
+            <button class="btn" onclick="logEvent('lunch_start')">Lunch Start</button>
+            <button class="btn" onclick="logEvent('lunch_end')">Lunch End</button>
+            <h3>History</h3>
+            <table id="history">
+                <thead>
+                    <tr>
+                        <th>Event</th>
+                        <th>Time</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            <button class="btn" onclick="resetClockIn()">Enter Another Code</button>
+        </div>
+        <button class="btn" onclick="showAdminPage()">Admin</button>
+    </div>
+
+    <div id="admin-site" style="display:none;">
+        <h1>Admin Page</h1>
+        <p>Enter Admin Password:</p>
+        <input type="password" id="admin-password" placeholder="Enter password">
+        <button class="btn" onclick="validateAdmin()">Submit</button>
+        <div id="admin-controls" style="display:none;">
+            <button class="btn" onclick="showAddWorker()">Add Worker</button>
+            <button class="btn" onclick="showWorkers()">Show Workers</button>
+            <button class="btn" onclick="showTimeLogs()">Show Time Logs</button>
+        </div>
+        <button class="btn" onclick="showClockInPage()">Back to Clock-In</button>
+        <div id="admin-content"></div>
+    </div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Add Worker</h2>
+            <p>Worker Name:</p>
+            <input type="text" id="new-worker-name" placeholder="Enter worker name">
+            <p>Worker Code:</p>
+            <input type="text" id="new-worker-code" placeholder="Enter worker code">
+            <button class="btn" onclick="addWorker()">Add Worker</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
